@@ -17,7 +17,6 @@
 
         .section { padding: 50px 10%; }
         
-        /* FORMULIER STYLING */
         .form-container { 
             max-width: 500px; 
             margin: 0 auto; 
@@ -25,59 +24,48 @@
             padding: 30px; 
             border: 1px solid var(--accent); 
             border-radius: 15px; 
-            box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
         }
-        input, textarea { 
-            width: 100%; 
-            padding: 15px; 
-            margin-bottom: 20px; 
-            background: #111; 
-            border: 1px solid #333; 
-            color: white; 
-            border-radius: 8px; 
-            font-size: 1rem;
-        }
-        .submit-btn { 
-            width: 100%; 
-            background: var(--accent); 
-            color: white; 
-            border: none; 
-            padding: 15px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            border-radius: 8px; 
-            font-size: 1.1rem; 
-        }
-        .submit-btn:hover { background: #a010db; }
+        input, textarea { width: 100%; padding: 15px; margin-bottom: 20px; background: #111; border: 1px solid #333; color: white; border-radius: 8px; }
+        .submit-btn { width: 100%; background: var(--accent); color: white; border: none; padding: 15px; font-weight: bold; cursor: pointer; border-radius: 8px; }
+
+        /* SPONSOR STYLING */
+        .sponsor-section { margin-top: 60px; padding: 40px; background: #050505; border-top: 1px solid #111; }
+        .sponsor-grid { display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 20px; }
+        .sponsor-logo { height: 60px; filter: grayscale(100%); transition: 0.3s; cursor: pointer; }
+        .sponsor-logo:hover { filter: grayscale(0%); transform: scale(1.1); }
     </style>
 </head>
 <body>
 
 <nav>
     <a href="#" class="logo">GAME BLAST</a>
-    <div style="font-size: 0.7rem; color: #32cd32; font-family: monospace;">● REDIRECT_MODE_ACTIVE</div>
+    <div style="font-size: 0.7rem; color: #32cd32; font-family: monospace;">● SPONSOR_PARTNERSHIP_V1</div>
 </nav>
 
 <section class="hero">
     <h1 id="days-count">530 Dagen</h1>
-    <p style="color: var(--secondary);">Tot de lancering door Mykola & Petro.</p>
+    <p style="color: var(--secondary);">Tot de officiële lancering door Mykola & Petro.</p>
 </section>
 
 <section class="section">
     <div class="form-container">
         <h2>Pre-order & Support</h2>
-        <p style="color: var(--secondary);">Stel je vraag of vraag naar de pre-order details.</p>
-        
-        <!-- DIT IS HET FORMULIER DAT DE PAGINA OPENT -->
         <form action="https://formspree.io/f/mwvaryej" method="POST">
             <input type="email" name="email" placeholder="Je e-mailadres" required>
             <textarea name="bericht" rows="4" placeholder="Hoe kan ik pre-orderen?" required></textarea>
-            
-            <!-- Hiermee komt de klant na het verzenden terug op je site (optioneel) -->
             <input type="hidden" name="_next" value="https://github.io">
-            
             <button type="submit" class="submit-btn">VERZEND BERICHT</button>
         </form>
+    </div>
+</section>
+
+<!-- SPONSOR SECTIE -->
+<section class="sponsor-section">
+    <p style="color: var(--secondary); letter-spacing: 2px; font-size: 0.8rem; text-transform: uppercase;">Mede mogelijk gemaakt door</p>
+    <div class="sponsor-grid">
+        <a href="https://kiwi-electronics.com" target="_blank">
+            <img src="kiwi-logo.png" alt="Kiwi Electronics" class="sponsor-logo">
+        </a>
     </div>
 </section>
 
@@ -91,4 +79,3 @@
 
 </body>
 </html>
-
