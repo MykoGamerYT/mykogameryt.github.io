@@ -1,522 +1,94 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Blast | Pre-order</title>
+    <style>
+        :root { --primary: #ffffff; --secondary: #888888; --neon-blue: #00f2ff; --bg: #000000; --accent: #bc13fe; }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: var(--bg); color: var(--primary); font-family: sans-serif; text-align: center; }
+        
+        nav { padding: 30px; border-bottom: 1px solid #111; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; letter-spacing: 2px; text-decoration: none; color: white; }
 
-<title>GAME BLAST | AI SUPPORT V73</title>
+        .hero { padding: 100px 10%; }
+        .hero h1 { font-size: 4rem; margin: 0; color: var(--neon-blue); }
 
-<style>
-:root{
-    --bg:#000;
-    --card:#050505;
-    --border:#111;
-    --white:#fff;
-    --gray:#8a8a8a;
-    --blue:#00f2ff;
-    --purple:#bc13fe;
-    --green:#32cd32;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    background:var(--bg);
-    color:var(--white);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    overflow-x:hidden;
-    scroll-behavior:smooth;
-}
-
-/* NAVBAR */
-
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    padding:25px 50px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid var(--border);
-    background:rgba(0,0,0,0.7);
-    backdrop-filter:blur(20px);
-    z-index:1000;
-}
-
-.logo{
-    font-size:1.2rem;
-    font-weight:900;
-    letter-spacing:3px;
-    text-decoration:none;
-    color:white;
-}
-
-.status{
-    color:var(--green);
-    font-family:monospace;
-    font-size:.75rem;
-}
-
-/* HERO */
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    flex-direction:column;
-    padding:0 10%;
-    position:relative;
-}
-
-.hero::before{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:var(--blue);
-    filter:blur(180px);
-    opacity:.08;
-    top:-100px;
-    left:-100px;
-    pointer-events:none;
-}
-
-.hero h1{
-    font-size:6rem;
-    color:var(--blue);
-    text-shadow:0 0 25px var(--blue);
-    font-weight:900;
-}
-
-.hero p{
-    color:var(--gray);
-    font-size:1.5rem;
-    margin-top:10px;
-}
-
-/* SECTION */
-
-.section{
-    padding:100px 10%;
-    border-top:1px solid var(--border);
-}
-
-.section-title{
-    color:var(--gray);
-    letter-spacing:5px;
-    font-size:.75rem;
-    margin-bottom:30px;
-}
-
-/* CHAT */
-
-.chat-container{
-    max-width:700px;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:
-    0 0 30px rgba(0,242,255,.08),
-    0 0 80px rgba(188,19,254,.05);
-}
-
-#chat-window{
-    height:450px;
-    overflow-y:auto;
-    padding:25px;
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-
-.msg{
-    padding:14px 18px;
-    border-radius:14px;
-    max-width:85%;
-    line-height:1.5;
-    animation:fade .3s ease;
-}
-
-.user-msg{
-    align-self:flex-end;
-    background:#1e1e1e;
-}
-
-.ai-msg{
-    align-self:flex-start;
-    background:linear-gradient(
-    135deg,
-    var(--purple),
-    #7928ca
-    );
-    font-weight:500;
-}
-
-@keyframes fade{
-    from{
-        opacity:0;
-        transform:translateY(10px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.chat-input{
-    display:flex;
-    border-top:1px solid var(--border);
-    background:#000;
-}
-
-#user-input{
-    flex:1;
-    background:transparent;
-    border:none;
-    color:white;
-    padding:22px;
-    outline:none;
-    font-size:1rem;
-}
-
-.send-btn{
-    border:none;
-    background:white;
-    color:black;
-    padding:0 35px;
-    font-weight:900;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.send-btn:hover{
-    background:var(--blue);
-}
-
-.send-btn:disabled{
-    opacity:.5;
-    cursor:not-allowed;
-}
-
-/* FOOTER */
-
-footer{
-    padding:50px 10%;
-    color:var(--gray);
-    border-top:1px solid var(--border);
-    font-size:.9rem;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-    nav{
-        padding:20px;
-    }
-
-    .hero{
-        padding:0 7%;
-    }
-
-    .hero h1{
-        font-size:3rem;
-    }
-
-    .hero p{
-        font-size:1.1rem;
-    }
-
-    .section{
-        padding:70px 7%;
-    }
-
-    .status{
-        display:none;
-    }
-
-    .send-btn{
-        padding:0 20px;
-    }
-}
-</style>
+        .section { padding: 50px 10%; }
+        
+        /* FORMULIER STYLING */
+        .form-container { 
+            max-width: 500px; 
+            margin: 0 auto; 
+            background: #050505; 
+            padding: 30px; 
+            border: 1px solid var(--accent); 
+            border-radius: 15px; 
+            box-shadow: 0 0 20px rgba(188, 19, 254, 0.2);
+        }
+        input, textarea { 
+            width: 100%; 
+            padding: 15px; 
+            margin-bottom: 20px; 
+            background: #111; 
+            border: 1px solid #333; 
+            color: white; 
+            border-radius: 8px; 
+            font-size: 1rem;
+        }
+        .submit-btn { 
+            width: 100%; 
+            background: var(--accent); 
+            color: white; 
+            border: none; 
+            padding: 15px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            font-size: 1.1rem; 
+        }
+        .submit-btn:hover { background: #a010db; }
+    </style>
 </head>
-
 <body>
 
-<!-- NAV -->
-
 <nav>
-    <a class="logo" href="#">GAME BLAST</a>
-    <div class="status">● SILENT_FETCH_V73_ACTIVE</div>
+    <a href="#" class="logo">GAME BLAST</a>
+    <div style="font-size: 0.7rem; color: #32cd32; font-family: monospace;">● REDIRECT_MODE_ACTIVE</div>
 </nav>
 
-<!-- HERO -->
-
 <section class="hero">
-
-    <h1 id="days-count">LOADING...</h1>
-
-    <p>
-        Tot de officiële lancering door Mykola & Petro.
-    </p>
-
+    <h1 id="days-count">530 Dagen</h1>
+    <p style="color: var(--secondary);">Tot de lancering door Mykola & Petro.</p>
 </section>
-
-<!-- AI SECTION -->
 
 <section class="section">
-
-    <div class="section-title">
-        GAME BLAST AI SUPPORT
+    <div class="form-container">
+        <h2>Pre-order & Support</h2>
+        <p style="color: var(--secondary);">Stel je vraag of vraag naar de pre-order details.</p>
+        
+        <!-- DIT IS HET FORMULIER DAT DE PAGINA OPENT -->
+        <form action="https://formspree.io" method="POST">
+            <input type="email" name="email" placeholder="Je e-mailadres" required>
+            <textarea name="bericht" rows="4" placeholder="Hoe kan ik pre-orderen?" required></textarea>
+            
+            <!-- Hiermee komt de klant na het verzenden terug op je site (optioneel) -->
+            <input type="hidden" name="_next" value="https://github.io">
+            
+            <button type="submit" class="submit-btn">VERZEND BERICHT</button>
+        </form>
     </div>
-
-    <div class="chat-container">
-
-        <div id="chat-window">
-
-            <div class="msg ai-msg">
-                Hallo 👋<br><br>
-                Heb je een vraag over Game Blast water guns,
-                support of pre-orders?
-            </div>
-
-        </div>
-
-        <div class="chat-input">
-
-            <input
-                id="user-input"
-                type="text"
-                placeholder="Typ je vraag..."
-                onkeydown="if(event.key==='Enter')sendMessage()"
-            >
-
-            <button
-                class="send-btn"
-                id="send-btn"
-                onclick="sendMessage()"
-            >
-                SEND
-            </button>
-
-        </div>
-
-    </div>
-
 </section>
 
-<footer>
-    © 2026 GAME BLAST — Future Water Warfare
-</footer>
-
 <script>
-
-/* =========================
-   COUNTDOWN TIMER
-========================= */
-
-const targetDate = new Date(
-    "October 22, 2027 09:45:00"
-).getTime();
-
-function updateTimer(){
-
-    const now = new Date().getTime();
-
-    const diff = targetDate - now;
-
-    const counter = document.getElementById(
-        "days-count"
-    );
-
-    if(diff <= 0){
-
-        counter.innerText = "LIVE";
-
-        return;
-    }
-
-    const days = Math.floor(
-        diff / (1000 * 60 * 60 * 24)
-    );
-
-    counter.innerText = days + " DAYS";
-}
-
-setInterval(updateTimer,1000);
-
-updateTimer();
-
-/* =========================
-   CHAT SYSTEM
-========================= */
-
-let step = 1;
-let savedQuestion = "";
-
-const input = document.getElementById(
-    "user-input"
-);
-
-const button = document.getElementById(
-    "send-btn"
-);
-
-const chatWindow = document.getElementById(
-    "chat-window"
-);
-
-function addMessage(text,type){
-
-    const div = document.createElement("div");
-
-    div.className = `msg ${type}-msg`;
-
-    div.innerHTML = text;
-
-    chatWindow.appendChild(div);
-
-    chatWindow.scrollTop =
-    chatWindow.scrollHeight;
-}
-
-/* EMAIL VALIDATION */
-
-function validEmail(email){
-
-    const regex =
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    return regex.test(email);
-}
-
-/* SEND MESSAGE */
-
-async function sendMessage(){
-
-    const value = input.value.trim();
-
-    if(!value) return;
-
-    addMessage(value,"user");
-
-    input.value = "";
-
-    /* STEP 1 */
-
-    if(step === 1){
-
-        savedQuestion = value;
-
-        setTimeout(()=>{
-
-            addMessage(
-                "Vraag ontvangen ✅",
-                "ai"
-            );
-
-            setTimeout(()=>{
-
-                addMessage(
-                    "Voer je e-mailadres in zodat we kunnen antwoorden.",
-                    "ai"
-                );
-
-                step = 2;
-
-            },700);
-
-        },400);
-
-    }
-
-    /* STEP 2 */
-
-    else if(step === 2){
-
-        if(!validEmail(value)){
-
-            addMessage(
-                "Voer een geldig e-mailadres in.",
-                "ai"
-            );
-
-            return;
-        }
-
-        button.disabled = true;
-
-        addMessage(
-            "Verzenden naar Mykola & Petro...",
-            "ai"
-        );
-
-        try{
-
-            const response = await fetch(
-                "https://formspree.io/f/mwvaryej",
-                {
-                    method:"POST",
-
-                    headers:{
-                        "Content-Type":
-                        "application/json",
-
-                        "Accept":
-                        "application/json"
-                    },
-
-                    body:JSON.stringify({
-
-                        question:savedQuestion,
-
-                        email:value,
-
-                        source:
-                        "GAME BLAST WEBSITE"
-
-                    })
-                }
-            );
-
-            if(response.ok){
-
-                addMessage(
-                    "Succes 🚀<br><br>Je bericht is verzonden. We nemen snel contact op.",
-                    "ai"
-                );
-
-                step = 1;
-
-            }else{
-
-                addMessage(
-                    "Fout bij verzenden.<br>Controleer Formspree instellingen.",
-                    "ai"
-                );
-            }
-
-        }catch(error){
-
-            addMessage(
-                "Netwerkfout.<br>Controleer internetverbinding.",
-                "ai"
-            );
-        }
-
-        button.disabled = false;
-    }
-}
-
+    const target = new Date("October 22, 2027 09:45:00").getTime();
+    setInterval(() => {
+        const diff = target - new Date().getTime();
+        document.getElementById('days-count').innerText = Math.floor(diff / 86400000) + " Dagen";
+    }, 1000);
 </script>
 
 </body>
 </html>
+
